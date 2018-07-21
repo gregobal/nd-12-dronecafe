@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="droneCafe" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="droneCafe" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="droneCafe" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="droneCafe" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Drone Cafe</title>
+    <meta name="description" content="">
+    <!--<base href="/">-->
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"
+          media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+<div ng-view ng-class="{backgroundImg: !logged}" style="display:flex;min-height:100vh;flex-direction:column;"></div>
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<script src="bower_components/socket.io-client/dist/socket.io.js"></script>
+
+<script src="./src/app.js"></script>
+<script src="./src/Customer/CustomerCtrl.js"></script>
+<script src="./src/Customer/CustomerService.js"></script>
+<script src="./src/Kitchen/KitchenCtrl.js"></script>
+<script src="./src/Kitchen/KitchenService.js"></script>
+
+</body>
+</html>

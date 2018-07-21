@@ -1,0 +1,53 @@
+<nav class="purple darken-4" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo center purple-text text-lighten-5">DRONE CAFE</a>
+        <ul class="right">
+            <li>
+                <span class="purple-text text-lighten-5">kitchen</span>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="section" style="flex: 1 0 auto;">
+    <div class="row">
+        <div class="col s6">
+            <h4>Ordered</h4>
+            <ul class="collection">
+                <li ng-repeat="order in orderedDishes" class="collection-item avatar">
+                    <img src="{{order.dish.image}}" alt="" class="circle"/>
+                    <div style="min-height: 36px;">
+                        <div style="font-size: 16px;width:80%;display:inline-block;">{{order.dish.title}}</div>
+                        <a class="secondary-content">
+                            <button class="btn waves-effect waves-light start purple" ng-click="startCooking(order)">
+                                Start
+                            </button>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s6">
+            <h4>Cooking</h4>
+            <ul class="collection with-header">
+                <li ng-repeat="order in cookingDishes" class="collection-item avatar">
+                    <img src="{{order.dish.image}}" alt="" class="circle"/>
+                    <div style="min-height: 36px;">
+                        <div style="font-size: 16px;width:80%;display:inline-block;">{{order.dish.title}}</div>
+                        <a class="secondary-content">
+                            <button class="btn waves-effect waves-light finish purple" ng-click="finishCooking(order)">
+                                Finish
+                            </button>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<footer class="page-footer purple lighten-2" style="padding-top:0;">
+    <div class="footer-copyright center-align">
+        <div class="container purple-text text-lighten-5">
+            2018 | Balabanov Grigorii
+        </div>
+    </div>
+</footer>

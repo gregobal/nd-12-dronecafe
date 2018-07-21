@@ -1,0 +1,115 @@
+<nav class="purple darken-4" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/"
+                                          class="brand-logo center purple-text text-lighten-5 hide-on-med-and-down">
+        DRONE CAFE</a>
+        <ul ng-if="logged" class="right">
+            <li>
+                <a class="purple-text text-lighten-5">{{customer.email}} ({{customer.credits}})</a>
+            </li>
+            <li>
+                <a class="btn btn-floating waves-effect waves-light purple" id="add-credits" ng-click="addCredits()">
+                    <i class="material-icons">account_balance_wallet</i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div ng-if="!logged" class="row"><br><br><br><br></div>
+<div ng-if="!logged" class="container" style="flex: 1 0 auto;">
+    <div class="row">
+        <div class="col m3 offset-m7 s12">
+            <div class="z-depth-3 purple lighten-5 row"
+                 style="padding: 16px 32px 16px 32px; border: 1px solid purple; opacity: .9">
+                <form class="col s12" name="customerForm">
+                    <div class='row'>
+                        <div class='col s12'>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class="form-control" name='name' ng-model="customer.name" type="text"
+                                   placeholder="Name"
+                                   value="{{ customer.name }}" required/>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class="form-control" name='email' ng-model="customer.email" type="email"
+                                   placeholder="Email"
+                                   value="{{ customer.email }}" required/>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class='row'>
+                        <button type='submit' ng-click="login(customer)" name='btn_login'
+                                class='col s12 btn btn-large waves-effect waves-light purple'
+                                ng-disabled="customerForm.$invalid">Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="logged" class="section deep-purple lighten-5" style="flex: 1 0 auto;">
+    <div class="row">
+        <div class="col m4 right s12" style="position: sticky; top: 0">
+            <h4 class="center purple-text text-darken-4">Orders</h4>
+            <ul class="collection with-header">
+                <li ng-repeat="order in orders | orderBy:'created':true" class="collection-item avatar">
+                    <img src="{{order.dish.image}}" alt="" class="circle"/>
+                    <h6>{{order.dish.title}}</h6>
+                    <a class="secondary-content">
+                        <span class="purple-text">{{order.status}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col m8 s12">
+            <h4 class="center purple-text text-darken-4">Menu</h4>
+            <div ng-repeat="dish in dishes | limitTo:50">
+                <div class="card horizontal">
+                    <div class="card-image purple lighten-5 circle"
+                         style="width: 258px; background: url({{dish.image}}) 100% 100% no-repeat;
+                         background-size: contain; background-position-y: center; background-position-x: center;">
+                        <!--<img src="{{dish.image}}" class="circle">-->
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h5 class="deep-purple-text">{{dish.title}}</h5>
+                            <p class="hide-on-small-only">Ingredients:
+                                <span ng-repeat="ingredient in dish.ingredients track by $index">
+                                    <span>{{ingredient}},</span>
+                                </span>
+                            </p>
+                            <span class="badge">Rating: {{dish.rating}}</span>
+                        </div>
+                        <div class="card-action purple lighten-5">
+                            <div class="row">
+                                <div class="col s11">
+                                    <h5 class="right">
+                                        <span ng-if="customer.credits >= dish.price">{{dish.price}} credits</span>
+                                        <span ng-if="customer.credits < dish.price" class="purple-text">
+                                            Add {{dish.price - customer.credits}} credits</span>
+                                    </h5>
+                                </div>
+                                <div class="col s1">
+                                    <a ng-if="customer.credits >= dish.price" ng-click="makeOrder(dish)"
+                                       id="add-button" class="btn-floating btn-large waves-effect waves-light purple">
+                                        <i class="material-icons">add</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="page-footer purple lighten-2" style="padding-top:0;">
+    <div class="footer-copyright center-align">
+        <div class="container purple-text text-lighten-5">
+            2018 | Balabanov Grigorii
+        </div>
+    </div>
+</footer>

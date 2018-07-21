@@ -19,8 +19,8 @@
 
 ## Heroku демо
 
-1. Customer application - in progress
-2. Kitchen application - in progress
+1. Customer application - https://nd-12-dronecafe.herokuapp.com/
+2. Kitchen application - https://nd-12-dronecafe.herokuapp.com/#/kitchen
 
 ## Запуск Тестов
 

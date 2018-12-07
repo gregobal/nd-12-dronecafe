@@ -1,9 +1,6 @@
 {
   "db":{
-    "user": "drone",
-    "pass": "cafe2018",
-    "name": "drone-cafe",
-    "host": "ds021036.mlab.com:21036"
+    
   },
   "api": "/api/v1",
   "port": "3000"
